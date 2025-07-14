@@ -1,0 +1,193 @@
+<!-- Place this inside your <body>, usually at the top -->
+<div class="menu">
+  <div class="menu-table flex-row-space-between">
+    <div class="logo flex-row-center">
+      <a href="index.html">Care Flow</a>
+    </div>
+    <a class="menu-button" tabindex="0" href="javascript:void(0)">
+      <img src="img/menu.png" alt="Menu Icon" />
+    </a>
+    <div class="menu-items flex-row-center flex-item">
+      <a class="menu-index" href="index.html">Overview</a>
+      <a class="menu-widget" href="widgets.html">Widgets</a>
+      <a class="menu-embedding" href="embedding.html">Embedding</a>
+      <div class="dropdown">
+        <a class="dropbtn" href="empty.html">Dropdown <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-content">
+          <a href="index.html">Overview</a>
+          <a href="widgets.html">Widgets</a>
+          <a href="embedding.html">Embedding</a>
+        </div>
+      </div>
+      <a href="https://github.com/yenchiah/project-website-template" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Basic Reset */
+  * {
+    box-sizing: border-box;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  a:hover {
+    color: #667eea;
+  }
+
+  /* Flex utility classes */
+  .flex-row-space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .flex-row-center {
+    display: flex;
+    align-items: center;
+  }
+  .flex-item {
+    flex: 1;
+  }
+
+  /* Menu container */
+  .menu {
+    background: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .menu-table {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo a {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #667eea;
+  }
+
+  /* Menu Items */
+  .menu-items {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .menu-items a {
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+  }
+  .menu-items a:hover {
+    background: #667eea;
+    color: white;
+  }
+
+  /* Dropdown */
+  .dropdown {
+    position: relative;
+  }
+  .dropbtn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+  }
+  .dropdown:hover .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
+    display: block;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    min-width: 150px;
+    z-index: 1000;
+  }
+  .dropdown-content a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #333;
+  }
+  .dropdown-content a:hover {
+    background: #667eea;
+    color: white;
+  }
+
+  /* Mobile menu button */
+  .menu-button {
+    display: none;
+    cursor: pointer;
+  }
+  .menu-button img {
+    width: 25px;
+    height: 25px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .menu-items {
+      display: none;
+      flex-direction: column;
+      background: #f8f9fa;
+      width: 100%;
+      position: absolute;
+      top: 56px; /* height of menu */
+      left: 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 1rem 0;
+      border-radius: 0 0 8px 8px;
+    }
+    .menu-items.active {
+      display: flex;
+    }
+    .menu-items a {
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .dropdown-content {
+      position: static;
+      box-shadow: none;
+      border-radius: 0;
+      background: transparent;
+      padding-left: 1rem;
+    }
+    .dropdown-content a {
+      padding: 0.5rem 0;
+      border-bottom: none;
+      color: #667eea;
+    }
+    .menu-button {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu toggle
+  const menuButton = document.querySelector('.menu-button');
+  const menuItems = document.querySelector('.menu-items');
+
+  menuButton.addEventListener('click', () => {
+    menuItems.classList.toggle('active');
+  });
+</script>
+
+<!-- Don't forget to include FontAwesome in <head> for the caret icon: -->
+<!--
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
+-->

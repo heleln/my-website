@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Care Flow - Embedding</title>
+
+  <!-- FontAwesome for icons -->
+  <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" type="text/css" />
+
+  <!-- Your CSS files -->
+  <link href="css/frame.css" rel="stylesheet" type="text/css" />
+  <link href="css/controls.css" rel="stylesheet" type="text/css" />
+  <link href="css/custom.css" rel="stylesheet" type="text/css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:300,700|Source+Sans+Pro:400,700"
+    rel="stylesheet" type="text/css" />
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Menu JS (you can place your menu toggle logic inside js/menu.js) -->
+  <script src="js/menu.js" defer></script>
+
+  <style>
+    /* Highlight current page menu link */
+    .menu-embedding {
+      color: #ffffff !important;
+      opacity: 1 !important;
+      font-weight: 700 !important;
+    }
+
+    /* Basic menu container styling */
+    .menu-container {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Push iframe content down so it’s not under the fixed menu */
+    .iframe-container {
+      margin-top: 60px; /* adjust height of your menu */
+      height: calc(100vh - 60px);
+    }
+
+    .iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="force-no-scroll">
+
+  <!-- Menu will be loaded here -->
+  <div class="menu-container"></div>
+
+  <!-- Embedded iframe content -->
+  <div class="iframe-container">
+    <iframe class="iframe" src="https://yenchiah.me/geo-heatmap/GeoHeatmap.html" title="Geo Heatmap"></iframe>
+  </div>
+
+  <script>
+    // Inject menu HTML dynamically into .menu-container (you can also hardcode in HTML if you prefer)
+    const menuHTML = `
+      <div class="menu-table flex-row-space-between" style="max-width:1200px; margin:0 auto; padding: 0.75rem 1rem; display:flex; justify-content:space-between; align-items:center;">
+        <div class="logo flex-row-center">
+          <a href="index.html" style="color:#fff; font-weight:700; font-size:1.5rem; text-decoration:none;">Care Flow</a>
+        </div>
+        <div class="menu-items flex-row-center flex-item" style="gap:1.5rem; display:flex;">
+          <a href="index.html" class="menu-index" style="color:#ddd; font-weight:500; text-decoration:none;">Overview</a>
+          <a href="widgets.html" class="menu-widget" style="color:#ddd; font-weight:500; text-decoration:none;">Widgets</a>
+          <a href="embedding.html" class="menu-embedding" style="color:#fff; font-weight:700; text-decoration:none;">Embedding</a>
+          <div class="dropdown" style="position:relative;">
+            <a href="empty.html" class="dropbtn" style="color:#ddd; font-weight:500; text-decoration:none; cursor:pointer;">
+              Dropdown <i class="fas fa-caret-down"></i>
+            </a>
+            <div class="dropdown-content" style="display:none; position:absolute; top:100%; left:0; background:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); border-radius:5px; min-width:150px; z-index:1000;">
+              <a href="index.html" style="color:#333; padding:0.5rem 1rem; display:block; text-decoration:none;">Overview</a>
+              <a href="widgets.html" style="color:#333; padding:0.5rem 1rem; display:block; text-decoration:none;">Widgets</a>
+              <a href="embedding.html" style="color:#333; padding:0.5rem 1rem; display:block; text-decoration:none;">Embedding</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.querySelector('.menu-container').innerHTML = menuHTML;
+
+    // Dropdown toggle on hover (desktop)
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownContent = dropdown.querySelector('.dropdown-content');
+    const dropBtn = dropdown.querySelector('.dropbtn');
+
+    dropdown.addEventListener('mouseenter', () => {
+      dropdownContent.style.display = 'block';
+    });
+    dropdown.addEventListener('mouseleave', () => {
+      dropdownContent.style.display = 'none';
+    });
+
+    // You can add mobile toggle menu logic inside your js/menu.js if needed
+  </script>
+</body>
+
+</html>
