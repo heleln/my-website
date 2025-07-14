@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - CARE_FLOW</title>
+    <meta name="description" content="Learn about CARE_FLOW's mission to revolutionize home healthcare with real-time patient monitoring and smart nurse coordination.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; overflow-x: hidden; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; transition: all 0.3s ease; }
+        .nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+        .logo { font-size: 1.8rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
+        .nav-links a:hover { color: #ffd700; }
+        .mobile-menu { display: none; flex-direction: column; cursor: pointer; }
+        .mobile-menu span { width: 25px; height: 3px; background: white; margin: 3px 0; transition: 0.3s; }
+        .nav-links.show { display: flex; flex-direction: column; background: rgba(102, 126, 234, 0.95); position: absolute; top: 60px; right: 20px; border-radius: 8px; padding: 1rem; }
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 120px 0 80px; text-align: center; }
+        .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; }
+        .section { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 3rem; }
+        .section-title h2 { font-size: 2.5rem; font-weight: 700; color: #333; }
+        .section-title p { font-size: 1.1rem; color: #666; }
+        .story-content, .values-grid, .team-grid, .stats-grid { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .story-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .story-image { background: linear-gradient(45deg, #667eea, #764ba2); height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem; }
+        .values-grid, .team-grid, .stats-grid { display: grid; gap: 2rem; }
+        .values-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .team-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .value-card, .team-card { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s ease; }
+        .value-card:hover, .team-card:hover { transform: translateY(-5px); }
+        .team-image { height: 250px; background: linear-gradient(45deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; }
+        .team-content { padding: 1.5rem; text-align: center; }
+        .stats { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 0; }
+        .stats-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: center; }
+        .footer { background: #333; color: white; padding: 40px 0 20px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .footer-section h3 { margin-bottom: 1rem; color: #ffd700; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid #555; color: #ccc; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: flex; }
+            .story-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header" id="header">
+    <nav class="nav">
+        <div class="logo"><i class="fas fa-heartbeat"></i> CARE_FLOW</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu" id="mobileMenu">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>About CARE_FLOW</h1>
+    <p>Innovating home healthcare through smart monitoring and real-time nursing support.</p>
+</section>
+
+<section class="section story">
+    <div class="section-title">
+        <h2>Our Story</h2>
+        <p>Transforming patient care at home across Uganda and beyond.</p>
+    </div>
+    <div class="story-content">
+        <div>
+            <h3>Bringing Healthcare to Your Doorstep</h3>
+            <p>Founded in 2024, CARE_FLOW was inspired by the need to bridge gaps in home-based healthcare services. Our platform connects nurses with patients efficiently and offers real-time alerts during emergencies, ensuring timely interventions.</p>
+            <p>Operating from Jinja, Uganda, we witnessed challenges patients faced after hospital discharge. CARE_FLOW now empowers healthcare providers with tracking tools, emergency alerts, and route optimization for quicker response.</p>
+            <p>With over 300+ active patients across East Africa, CARE_FLOW continues its mission to simplify, digitize, and personalize home healthcare.</p>
+        </div>
+        <div class="story-image">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="services">
+    <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Empowering healthcare professionals with technology.</p>
+    </div>
+    <div class="values-grid">
+        <div class="value-card">
+            <i class="fas fa-user-nurse fa-2x" style="color:#667eea;"></i>
+            <h3>Patient Monitoring</h3>
+            <p>Real-time patient health tracking with alert systems for critical care needs.</p>
+        </div>
+        <div class="value-card">
+            <i class="fas fa-map-marked-alt fa-2x" style="color:#667eea;"></i>
+            <h3>Route Optimization</h3>
+            <p>Smart navigation tools to help nurses reach patients faster using traffic-free routes.</p>
+        </div>
+        <div class="value-card">
+            <i class="fas fa-bell fa-2x" style="color:#667eea;"></i>
+            <h3>Emergency Alerts</h3>
+            <p>Instant notifications via SMS and push alerts in case of patient emergencies.</p>
+        </div>
+        <div class="value-card">
+            <i class="fas fa-shield-alt fa-2x" style="color:#667eea;"></i>
+            <h3>Data Security</h3>
+            <p>Patient confidentiality assured with robust data protection protocols.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section team">
+    <div class="section-title">
+        <h2>Meet Our Team</h2>
+        <p>The experts behind CARE_FLOW's innovation.</p>
+    </div>
+    <div class="team-grid">
+        <div class="team-card">
+            <div class="team-image">
+                <img src="img/hellen.jpg" alt="Namwesezi Hellen" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="team-content">
+                <h3>Namwesezi Hellen</h3>
+                <p>Founder & CEO</p>
+                <div>Experienced nurse and innovator passionate about home healthcare solutions.</div>
+            </div>
+        </div>
+        <div class="team-card">
+            <div class="team-image">
+                <img src="img/1000039909.jpg" alt="Tamale Denis" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="team-content">
+                <h3>Tamale Denis</h3>
+                <p>CTO</p>
+                <div>Tech lead specializing in mobile apps and real-time monitoring systems.</div>
+            </div>
+        </div>
+        <div class="team-card">
+            <div class="team-image">
+                <img src="img/my.jpeg" alt="Namayanja Rahmat" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="team-content">
+                <h3>Namayanja Rahmat</h3>
+                <p>Business Development</p>
+                <div>Focuses on expanding CARE_FLOW services across Africa.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stats-grid">
+        <div><h2>300+</h2><p>Patients Monitored</p></div>
+        <div><h2>50+</h2><p>Nurses Onboard</p></div>
+        <div><h2>24/7</h2><p>Emergency Support</p></div>
+        <div><h2>10+</h2><p>Partner Hospitals</p></div>
+    </div>
+</section>
+
+<section class="section" id="contact">
+    <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>Reach out for demos, support, or partnerships.</p>
+    </div>
+    <div style="text-align:center; font-size:1.1rem;">
+        <p>Email: support@careflowapp.com</p>
+        <p>Phone: +256 709497401</p>
+        <p>Office: Kampala, Uganda</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>CARE_FLOW</h3>
+            <p>Transforming patient care with real-time monitoring and smart nurse support.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Explore</h3>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+            <a href="about.html">About Us</a>
+        </div>
+        <div class="footer-section">
+            <h3>Social</h3>
+            <p><i class="fab fa-facebook"></i> Facebook</p>
+            <p><i class="fab fa-twitter"></i> Twitter</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 CARE_FLOW. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navLinks = document.getElementById('navLinks');
+    mobileMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+</script>
+
+</body>
+</html>

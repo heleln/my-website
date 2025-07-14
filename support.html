@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support & Help Center - PlanetPure</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        /* Search Bar */
+        .search-section {
+            background: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 1rem;
+            background: white;
+            border: 2px solid #e1e5e9;
+            border-radius: 50px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            padding: 0.5rem;
+        }
+
+        .search-box button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .search-box button:hover {
+            background: #5a6fd8;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Quick Help Section */
+        .quick-help {
+            background: #f8f9fa;
+        }
+
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .help-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .help-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .help-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .help-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .help-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .help-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid #e1e5e9;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .faq-question:hover {
+            background: #e9ecef;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 1.5rem;
+            max-height: 200px;
+        }
+
+        .faq-toggle {
+            color: #667eea;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        /* Contact Support Section */
+        .contact-support {
+            background: #f8f9fa;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .support-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+
+        .support-info {
+            color: #666;
+        }
+
+        .support-info h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .support-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .support-item i {
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #ffd700;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #ffd700;
+            color: #333;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            color: #ccc;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .help-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <div class="logo">
+                <i class="fas fa-recycle"></i>
+                PlanetPure
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Support & Help Center</h1>
+            <p>We're here to help you get the most out of PlanetPure</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" placeholder="Search for help articles, guides, or FAQs...">
+                <button><i class="fas fa-search"></i> Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Help Section -->
+    <section class="section quick-help">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quick Help</h2>
+                <p>Find answers to common questions and get started quickly</p>
+            </div>
+            <div class="help-grid">
+                <div class="help-card fade-in">
+                    <div class="help-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Getting Started</h3>
+                    <p>New to PlanetPure? Learn how to set up your account and start managing waste efficiently.</p>
+                    <a href="#getting-started">View Guide →</a>
+                </div>
+                <div class="help-card fade-in">
+                    <div class="help-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile App</h3>
+                    <p>Download our mobile app and manage waste on-the-go with real-time notifications.</p>
+                    <a href="#mobile-app">Download App →</a>
+                </div>
+                <div class="help-card fade-in">
+                    <div class="help-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics & Reports</h3>
+                    <p>Understand your waste data and generate comprehensive reports for compliance.</p>
+                    <a href="#analytics">Learn More →</a>
+                </div>
+                <div class="help-card fade-in">
+                    <div class="help-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Account Settings</h3>
+                    <p>Manage your account preferences, team permissions, and billing information.</p>
+                    <a href="#settings">Configure →</a>
+                </div>
+                <div class="help-card fade-in">
+                    <div class="help-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security & Privacy</h3>
+                    <p>Learn about our security measures and how we protect your data.</p>
+                    <a href="#security">Security Info →</a>
+                </div>
+                <div class="help-card fade-in">
+                    <div class="help-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Contact Support</h3>
+                    <p>Can't find what you're looking for? Our support team is here to help.</p>
+                    <a href="#contact-support">Get Help →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to the most common questions</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        How do I get started with PlanetPure?
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Getting started is easy! Simply sign up for an account, complete your profile setup, and our team will guide you through the onboarding process. We'll help you configure your waste management settings and train your team on using the platform effectively.
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        What types of waste can PlanetPure help me manage?
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        PlanetPure handles all types of waste including organic waste, recyclables (paper, plastic, glass, metal), electronic waste, hazardous waste, and general waste. Our platform provides specific tracking and management tools for each waste category.
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        How much does PlanetPure cost?
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We offer flexible pricing plans starting from UGX 30,000/month for residential users to custom enterprise solutions. Our SMB package is UGX 100,000/month. Contact our sales team for a personalized quote based on your specific needs.
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        Is my data secure with PlanetPure?
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely! We use enterprise-grade security measures including end-to-end encryption, regular security audits, and compliance with international data protection standards. Your data is stored securely and never shared with third parties without your consent.
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        Can I integrate PlanetPure with my existing systems?
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! PlanetPure offers API integrations and can connect with your existing ERP, accounting, and management systems. Our technical team will work with you to ensure seamless integration and data synchronization.
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        What kind of support do you provide?
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We provide 24/7 customer support through multiple channels including phone, email, live chat, and in-app support. Our dedicated support team is trained to handle technical issues, account management, and general inquiries.
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        How do I report a technical issue?
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        You can report technical issues through our support portal, by calling our support line at +256 78011407, or by using the "Report Issue" feature in our mobile app. We typically respond to urgent issues within 2 hours.
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        Do you provide training for my team?
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! We offer comprehensive training programs including online tutorials, in-person training sessions, and ongoing support. Our training covers platform usage, best practices, and compliance requirements.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Support Section -->
+    <section class="section contact-support">
+        <div class="container">
+            <div class="section-title">
+                <h2>Still Need Help?</h2>
+                <p>Our support team is ready to assist you</p>
+            </div>
+            <div class="support-grid">
+                <div class="support-form fade-in">
+                    <h3>Submit a Support Ticket</h3>
+                    <form id="supportForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="issue">Issue Type</label>
+                            <select id="issue" name="issue" required>
+                                <option value="">Select an issue type</option>
+                                <option value="technical">Technical Issue</option>
+                                <option value="billing">Billing Question</option>
+                                <option value="feature">Feature Request</option>
+                                <option value="training">Training Request</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="priority">Priority Level</label>
+                            <select id="priority" name="priority" required>
+                                <option value="">Select priority</option>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                                <option value="urgent">Urgent</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" rows="5" required placeholder="Please describe your issue in detail..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Ticket</button>
+                    </form>
+                </div>
+                <div class="support-info fade-in">
+                    <h3>Contact Information</h3>
+                    <div class="support-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone Support:</strong><br>
+                            +256 78011407<br>
+                            Mon-Fri: 8AM-6PM EAT
+                        </div>
+                    </div>
+                    <div class="support-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email Support:</strong><br>
+                            support@planetpure.com<br>
+                            Response within 24 hours
+                        </div>
+                    </div>
+                    <div class="support-item">
+                        <i class="fas fa-comments"></i>
+                        <div>
+                            <strong>Live Chat:</strong><br>
+                            Available 24/7<br>
+                            Click the chat icon in the app
+                        </div>
+                    </div>
+                    <div class="support-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Office Address:</strong><br>
+                            123 Wandegeya Street<br>
+                            Kampala City, Uganda
+                        </div>
+                    </div>
+                    <div class="support-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Business Hours:</strong><br>
+                            Mon-Fri: 8AM-6PM EAT<br>
+                            Sat: 9AM-1PM EAT
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>PlanetPure</h3>
+                    <p>Leading the way in smart waste management solutions for a sustainable future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <a href="#">Enterprise Solutions</a>
+                    <a href="#">SMB Package</a>
+                    <a href="#">Residential</a>
+                    <a href="#">Consulting</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <a href="about.html">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Press</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="support.html">Help Center</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PlanetPure. All rights reserved. | Made with <i class="fas fa-heart" style="color: #ff6b6b;"></i> for a greener planet</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(102, 126, 234, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', function() {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            this.classList.toggle('active');
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const toggle = this.querySelector('.faq-toggle');
+                
+                // Close other open FAQs
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    if (item !== answer) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                document.querySelectorAll('.faq-toggle').forEach(item => {
+                    if (item !== toggle) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current FAQ
+                answer.classList.toggle('active');
+                toggle.classList.toggle('active');
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Support form handling
+        document.getElementById('supportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you! Your support ticket has been submitted. We will get back to you within 24 hours.');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Search functionality
+        document.querySelector('.search-box button').addEventListener('click', function() {
+            const searchTerm = document.querySelector('.search-box input').value;
+            if (searchTerm.trim()) {
+                // Simulate search
+                alert('Searching for: ' + searchTerm + '\nThis would search through our knowledge base.');
+            }
+        });
+
+        // Enter key for search
+        document.querySelector('.search-box input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.search-box button').click();
+            }
+        });
+    </script>
+</body>
+</html> 
